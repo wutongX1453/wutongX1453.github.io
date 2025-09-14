@@ -20,28 +20,40 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="WutongX">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="前言 本教程记录我搭建个人网页的过程，以及步骤原理。  搭建原理 利用nexo(一个静态网页生成器)将你的博客（markdown文档）转换成HTML网页文件，然后利用Git工具上传到一个名为user.github.io的仓库中，这个特殊仓库享受了GitHub免费提供的GitHub Pages静态文件托管服务。GitHub Pages 接受并托管你上传的静态文件，并提供一个特定域名以供访问。收到访问">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于githubpages与nexo的个人网站搭建">
+<meta property="og:url" content="http://example.com/2025/08/23/%E5%9F%BA%E4%BA%8Egithubpages%E4%B8%8Enexo%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/index.html">
 <meta property="og:site_name" content="WutongX">
+<meta property="og:description" content="前言 本教程记录我搭建个人网页的过程，以及步骤原理。  搭建原理 利用nexo(一个静态网页生成器)将你的博客（markdown文档）转换成HTML网页文件，然后利用Git工具上传到一个名为user.github.io的仓库中，这个特殊仓库享受了GitHub免费提供的GitHub Pages静态文件托管服务。GitHub Pages 接受并托管你上传的静态文件，并提供一个特定域名以供访问。收到访问">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="d:%5CBlog%5Csource_posts%5C%E5%9F%BA%E4%BA%8Egithubpages%E4%B8%8Enexo%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA.assets%5C5.png">
+<meta property="og:image" content="d:\Blog\source\_posts\%E5%9F%BA%E4%BA%8Egithubpages%E4%B8%8Enexo%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA.assets\1.png">
+<meta property="og:image" content="d:%5CBlog%5Csource_posts%5C%E5%9F%BA%E4%BA%8Egithubpages%E4%B8%8Enexo%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA.assets%5C3.png">
+<meta property="og:image" content="d:%5CBlog%5Csource_posts%5C%E5%9F%BA%E4%BA%8Egithubpages%E4%B8%8Enexo%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA.assets%5Cimage-20250914222218341.png">
+<meta property="og:image" content="d:%5CBlog%5Csource_posts%5C%E5%9F%BA%E4%BA%8Egithubpages%E4%B8%8Enexo%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA.assets%5Cimage-20250914224319572.png">
+<meta property="og:image" content="d:%5CBlog%5Csource_posts%5C%E5%9F%BA%E4%BA%8Egithubpages%E4%B8%8Enexo%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA.assets%5Cimage-20250914230125685.png">
+<meta property="article:published_time" content="2025-08-23T12:55:38.000Z">
+<meta property="article:modified_time" content="2025-09-14T15:40:55.213Z">
 <meta property="article:author" content="WutongX">
+<meta property="article:tag" content="tutorial">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:%5CBlog%5Csource_posts%5C%E5%9F%BA%E4%BA%8Egithubpages%E4%B8%8Enexo%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA.assets%5C5.png">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2025/08/23/%E5%9F%BA%E4%BA%8Egithubpages%E4%B8%8Enexo%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>WutongX</title>
+  <title>基于githubpages与nexo的个人网站搭建 | WutongX</title>
   
 
 
@@ -149,309 +161,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/09/14/%E5%9B%9B%E8%BD%B4%E9%A3%9E%E8%A1%8C%E5%99%A8%EF%BC%88%E4%B8%89%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/me.png">
-      <meta itemprop="name" content="WutongX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WutongX">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/09/14/%E5%9B%9B%E8%BD%B4%E9%A3%9E%E8%A1%8C%E5%99%A8%EF%BC%88%E4%B8%89%EF%BC%89/" class="post-title-link" itemprop="url">四轴飞行器（三）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-09-14 20:52:37" itemprop="dateCreated datePublished" datetime="2025-09-14T20:52:37+08:00">2025-09-14</time>
-            </span>
-
-          
-
-        </div>
-      </header>
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/09/14/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/me.png">
-      <meta itemprop="name" content="WutongX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WutongX">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/09/14/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">数字电路学习笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-09-14 20:51:48" itemprop="dateCreated datePublished" datetime="2025-09-14T20:51:48+08:00">2025-09-14</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/09/14/Godot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/me.png">
-      <meta itemprop="name" content="WutongX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WutongX">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/09/14/Godot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Godot学习笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2025-09-14 15:58:13 / 修改时间：16:00:10" itemprop="dateCreated datePublished" datetime="2025-09-14T15:58:13+08:00">2025-09-14</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Godot概论">Godot概论</h2>
-<p>Godot 是一个<strong>免费、开源</strong>的 2D 和 3D 游戏引擎。它提供了一个完整的、集成的开发环境，让开发者可以轻松地创建游戏和应用程序。</p>
-<p>你可以把它理解为类似于 <strong>Unity</strong> 或 <strong>Unreal Engine</strong> 的替代品，但它以其独特的设计哲学和完全开源的特性而闻名。</p>
-<hr>
-<h3 id="核心特点与优势">核心特点与优势</h3>
-<ol>
-<li><strong>完全免费和开源（MIT 许可证）<strong>这是 Godot 最大的优势之一。你可以完全免费地使用它，无论是个人学习、业余爱好还是商业项目，都</strong>无需支付任何费用或版税</strong>。它的源代码公开，意味着社区可以不断改进它，透明度极高。</li>
-<li><strong>轻量级与高性能</strong>整个引擎就是一个可执行文件，非常小巧（几十MB），下载和启动速度极快，对电脑硬件要求较低。</li>
-<li><strong>场景与节点架构</strong>这是 Godot 设计理念的核心。游戏中的一切（角色、敌人、灯光、UI元素等）都是一个<strong>节点（Node）</strong>。将这些节点像搭积木一样组合起来，就形成了<strong>场景（Scene）</strong>。这种结构非常直观灵活，易于理解和复用。</li>
-<li><strong>内置脚本语言 GDScript</strong>Godot 自带一门叫做 <strong>GDScript</strong> 的脚本语言。它的语法类似于 Python，非常简洁易学，专为游戏开发和高迭代效率而设计，与引擎的集成度极高。同时，它也<strong>官方支持</strong>其他语言，如 <strong>C#</strong> 和 <strong>VisualScript</strong>（节点式编程），并且通过社区扩展支持更多语言（如 Rust）。</li>
-<li><strong>强大的 2D 支持</strong>Godot 的 2D 引擎是其强项。它专为 2D 开发设计，拥有高效的像素精确渲染和直观的 2D 工作流程，许多开发者认为其 2D 体验甚至优于一些主流商业引擎。</li>
-<li><strong>活跃且友好的社区</strong>作为一个开源项目，Godot 拥有一个非常活跃、乐于助人的全球社区。当你遇到问题时，很容易在论坛、Discord 或视频网站上找到帮助和教程。</li>
-<li><strong>“一应俱全”的设计</strong>引擎内置了大量工具，几乎涵盖了游戏开发的所有方面，包括动画、粒子、物理、导航、UI 编辑等，减少了对外部工具的依赖。</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/09/14/C-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/me.png">
-      <meta itemprop="name" content="WutongX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WutongX">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/09/14/C-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">C++学习笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2025-09-14 15:36:55 / 修改时间：15:48:39" itemprop="dateCreated datePublished" datetime="2025-09-14T15:36:55+08:00">2025-09-14</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="命名空间">命名空间</h3>
-<p>想象你和同事都写了一个 print()函数，但功能不同。如果没有命名空间，编译器无法区分这两个同名函数。命名空间就像给代码加了一个“姓氏”，避免重名混淆。</p>
-<ul>
-<li>Define</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> MyLib &#123;  <span class="comment">// 定义名为 MyLib 的命名空间</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;MyLib&#x27;s print\n&quot;</span>; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> YourLib &#123;  <span class="comment">// 另一个命名空间</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;YourLib&#x27;s print\n&quot;</span>; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Use</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    MyLib::<span class="built_in">print</span>();  <span class="comment">// 输出: MyLib&#x27;s print</span></span><br><span class="line">    YourLib::<span class="built_in">print</span>(); <span class="comment">// 输出: YourLib&#x27;s print</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>:: 是作用域解析运算符，指明调用哪个命名空间中的函数。</strong></p>
-<h3 id="储存类">储存类</h3>
-<ul>
-<li>auto(弃用)</li>
-<li>static（静动态，主要影响装载）</li>
-<li>register（建议编译器将变量放入寄存器中）</li>
-<li>extern</li>
-<li>mutable(?)</li>
-<li>thread_local</li>
-</ul>
-<h3 id="Lambda匿名函数">Lambda匿名函数</h3>
-<h3 id="引用对象">引用对象</h3>
-<ul>
-<li>变量名称是变量附属在内存位置中的标签，您可以把引用当成是变量附属在内存位置中的第二个标签。因此，您可以通过原始变量名称或引用来访问变量的内容。</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> i = <span class="number">17</span>;</span><br><span class="line"><span class="type">int</span>&amp;  r = i;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>对r的操作实际上就是对i的操作，r是i的别名</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">addOne</span><span class="params">(<span class="type">int</span>&amp; x)</span> </span>&#123;</span><br><span class="line">    x += <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">addOne</span>(a); <span class="comment">// a变成11</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>在简单场景下直接用变量就行，引用主要用于需要“别名”或高效传递的场合，特别是函数参数和返回值。简化指针操作,引用比<strong>指针语法更直观、安全</strong>。</li>
-</ul>
-<h3 id="stdio与iostream">stdio与iostream</h3>
-<ul>
-<li><code>stdio</code>是 C 语言的 I/O 库，基于函数和格式字符串。</li>
-<li><code>iostream</code>是 C++ 的 I/O 库，基于类、对象、流和运算符重载。</li>
-<li><code>iostream</code>底层实现通常（但不必须）会利用 <code>stdio</code>的设施（如 <code>FILE*</code>和缓冲区）。</li>
-<li><code>iostream</code>解决了 <code>stdio</code>在类型安全和可扩展性方面的主要缺点。</li>
-</ul>
-<p><strong>C++ 程序中可以同时使用两者：</strong> C++ 标准库包含了 <code>&lt;cstdio&gt;</code>，因此 C++ 程序可以合法地使用 <code>printf</code>, <code>scanf</code>等函数，也可以使用 <code>cout</code>, <code>cin</code>等流对象。<code>stdio</code>和 <code>iostream</code>通常使用<strong>独立的缓冲区</strong>。这意味着如果你在同一个程序中混合使用 <code>printf</code>和 <code>cout</code>（或 <code>scanf</code>和 <code>cin</code>），输出的顺序<strong>可能</strong>不是你代码中调用的顺序，因为数据可能还在各自的缓冲区中未刷新。为了避免混乱的输出顺序，通常需要手动刷新缓冲区</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">（<span class="built_in">fflush</span>(stdout)或 std::cout &lt;&lt; std::flush/ std::cout &lt;&lt; std::endl）</span><br></pre></td></tr></table></figure>
-<ul>
-<li>输入examp</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">( )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="type">char</span> str[] = <span class="string">&quot;Hello C++&quot;</span>;</span><br><span class="line"></span><br><span class="line">   cout &lt;&lt; <span class="string">&quot;Value of str is : &quot;</span> &lt;&lt; str &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>C++ 编译器根据要输出变量的数据类型，选择合适的流插入运算符来显示值。&lt;&lt; 运算符被<strong>重载</strong>来输出内置类（整型、浮点型、double 型、字符串和指针）的数据项。</li>
-<li>体现了<strong>面向对象</strong>的设计理念，而stdio中则需要手动在函数中指定输入输出数据类型</li>
-</ul>
-<h3 id="结构体与类的区别">结构体与类的区别</h3>
-<p>在 C++ 中，struct 和 class 本质上非常相似，唯一的区别在于默认的<strong>访问权限</strong>：</p>
-<ul>
-<li><code>struct</code> 默认的成员和继承是 <code>public</code>。</li>
-<li><code>class</code> 默认的成员和继承是 <code>private</code>。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -467,10 +180,9 @@
       <meta itemprop="name" content="WutongX">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/08/23/%E5%9F%BA%E4%BA%8Egithubpages%E4%B8%8Enexo%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/" class="post-title-link" itemprop="url">基于githubpages与nexo的个人网站搭建</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          基于githubpages与nexo的个人网站搭建
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -500,7 +212,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="前言">前言</h2>
+        <h2 id="前言">前言</h2>
 <p>本教程记录我搭建个人网页的过程，以及步骤原理。</p>
 <p><img src="D:%5CBlog%5Csource_posts%5C%E5%9F%BA%E4%BA%8Egithubpages%E4%B8%8Enexo%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA.assets%5C5.png" alt=""></p>
 <h2 id="搭建原理">搭建原理</h2>
@@ -619,21 +331,33 @@
 <p>![image-20250914230105226](D:\Blog\source_posts\基于githubpages与nexo的个人网站搭建.assets\image-20250914230105226.png</p>
 <p><img src="D:%5CBlog%5Csource_posts%5C%E5%9F%BA%E4%BA%8Egithubpages%E4%B8%8Enexo%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA.assets%5Cimage-20250914230125685.png" alt="image-20250914230125685"></p>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+          <div class="post-tags">
+              <a href="/tags/tutorial/" rel="tag"># tutorial</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2025/09/14/C-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="C++学习笔记">
+      C++学习笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
@@ -686,6 +410,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">搭建原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%AD%E5%BB%BAGitHub-Pages-%E6%89%98%E7%AE%A1"><span class="nav-number">4.</span> <span class="nav-text">搭建GitHub Pages 托管</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E7%89%B9%E6%AE%8A%E4%BB%93%E5%BA%93"><span class="nav-number">4.1.</span> <span class="nav-text">建立特殊仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E4%BB%93%E5%BA%93%E4%B8%8E%E6%9C%AC%E5%9C%B0%E7%9A%84SSH%E8%BF%9E%E6%8E%A5"><span class="nav-number">4.2.</span> <span class="nav-text">建立仓库与本地的SSH连接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5%E5%AF%B9"><span class="nav-number">4.2.1.</span> <span class="nav-text">生成密钥对</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E5%8F%91%E5%85%AC%E9%92%A5"><span class="nav-number">4.2.2.</span> <span class="nav-text">分发公钥</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E8%BD%AC%E5%8C%96markdown%E4%B8%BA%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5"><span class="nav-number">5.</span> <span class="nav-text">本地转化markdown为静态网页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E6%8E%A8%E9%80%81%E5%88%B0github-pages"><span class="nav-number">6.</span> <span class="nav-text">将静态网页推送到github pages</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BAnaxo%E6%8C%87%E5%AE%9A%E4%BB%93%E5%BA%93"><span class="nav-number">6.1.</span> <span class="nav-text">为naxo指定仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A8%E9%80%81%EF%BC%81%EF%BC%81"><span class="nav-number">6.2.</span> <span class="nav-text">推送！！</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E8%AE%BE%E7%BD%AE"><span class="nav-number">7.</span> <span class="nav-text">基础设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E6%96%87%E7%AB%A0"><span class="nav-number">8.</span> <span class="nav-text">写文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BE%8E%E5%8C%96%E4%B8%8E%E7%BB%84%E4%BB%B6%E8%AE%BE%E7%BD%AE"><span class="nav-number">9.</span> <span class="nav-text">美化与组件设置</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
