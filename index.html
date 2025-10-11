@@ -150,6 +150,63 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yourusername.github.io/2025/09/23/%E5%85%B3%E4%BA%8E%E9%99%80%E8%9E%BA%E4%BB%AA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.png">
+      <meta itemprop="name" content="WutongX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WutongX">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/09/23/%E5%85%B3%E4%BA%8E%E9%99%80%E8%9E%BA%E4%BB%AA/" class="post-title-link" itemprop="url">关于陀螺仪</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-09-23 14:48:20" itemprop="dateCreated datePublished" datetime="2025-09-23T14:48:20+08:00">2025-09-23</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://yourusername.github.io/2025/09/21/%E4%B8%96%E7%95%8C%E8%A7%82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -264,6 +321,13 @@
 
               <time title="创建时间：2025-09-17 17:55:25" itemprop="dateCreated datePublished" datetime="2025-09-17T17:55:25+08:00">2025-09-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-09-23 15:06:59" itemprop="dateModified" datetime="2025-09-23T15:06:59+08:00">2025-09-23</time>
+              </span>
 
           
 
@@ -276,7 +340,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <h2 id="原理">原理</h2>
+<h3 id="科里奥利力">科里奥利力</h3>
+<ul>
+<li>GY86采用MEMS技术，通过检测震动质量快产生的科里奥利效应来测量角速度</li>
+</ul>
+<p>科里奥利力是因为观察者站在一个<strong>旋转的参考系</strong>（如地球）中，为了解释物体运动的偏差而“引入”的一种力。</p>
+
       
     </div>
 
@@ -326,7 +396,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-09-17 17:53:02" itemprop="dateModified" datetime="2025-09-17T17:53:02+08:00">2025-09-17</time>
+                <time title="修改时间：2025-09-22 16:25:28" itemprop="dateModified" datetime="2025-09-22T16:25:28+08:00">2025-09-22</time>
               </span>
 
           
@@ -568,7 +638,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-09-17 15:41:51" itemprop="dateModified" datetime="2025-09-17T15:41:51+08:00">2025-09-17</time>
+                <time title="修改时间：2025-10-11 10:05:13" itemprop="dateModified" datetime="2025-10-11T10:05:13+08:00">2025-10-11</time>
               </span>
 
           
@@ -712,6 +782,57 @@
 <ul>
 <li>C++特色“引用”</li>
 </ul>
+<p>当形参是一个引用时，那么在函数内部，形参就是实参的别名。换句话说，形参就是实参本身，因此对形参的改变就会直接改变实参。这里，引用形参与实参的别名绑定不是永久性的，而只在函数作用范围内起作用。</p>
+<h4 id="返回">返回</h4>
+<ul>
+<li>返回左值与右值问题</li>
+<li>返回局部变量的引用或指针引起未定义错误</li>
+<li>拖尾函数返回类型</li>
+</ul>
+<p>主要运用于函数模板</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> −&gt;<span class="type">int</span> </span>&#123; <span class="keyword">return</span> a + b; &#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123; <span class="keyword">return</span> a + b; &#125;</span><br></pre></td></tr></table></figure>
+<p>上下两种声明等价</p>
+<h4 id="重载">重载</h4>
+<h4 id="函数回调（妙）">函数回调（妙）</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//bzj^_^</span></span><br><span class="line"><span class="comment">//callback.cpp</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="comment">//callback</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">generator</span><span class="params">(<span class="type">unsigned</span>&amp; *v*)</span> </span>&#123; *v* = <span class="built_in">rand</span>() % <span class="number">100</span>; &#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">arrayWalk</span><span class="params">(<span class="type">unsigned</span> **a*, *<span class="type">size_t</span>* *len*, <span class="type">void</span> *callback*(<span class="type">unsigned</span>&amp;))</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> <span class="keyword">for</span> (*<span class="type">size_t</span>* i = <span class="number">0</span>; i &lt; *len*; ++i) *callback*(*a*[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//predicate</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">gt50</span><span class="params">(<span class="type">unsigned</span> *v*)</span> </span>&#123; <span class="keyword">return</span> *v* &gt; <span class="number">50</span>; &#125;</span><br><span class="line">*<span class="function"><span class="type">size_t</span>* <span class="title">countif</span><span class="params">(<span class="type">unsigned</span> **a*, *<span class="type">size_t</span>* *len*, <span class="type">bool</span> *pred*(<span class="type">unsigned</span>))</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> *<span class="type">size_t</span>* count = <span class="number">0</span>;</span><br><span class="line"> <span class="keyword">for</span> (*<span class="type">size_t</span>* i = <span class="number">0</span>; i &lt; *len*; ++i) <span class="keyword">if</span> (*pred*(*a*[i])) ++count;</span><br><span class="line"> <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> <span class="built_in">srand</span>(<span class="built_in">time</span>(<span class="number">0</span>));</span><br><span class="line"> <span class="type">const</span> *<span class="type">size_t</span>* len = <span class="number">5</span>;</span><br><span class="line"> <span class="type">unsigned</span> a[len];</span><br><span class="line"> <span class="comment">//fill array</span></span><br><span class="line"> <span class="built_in">arrayWalk</span>(a, len, generator);</span><br><span class="line"> <span class="comment">//print array, using lambda</span></span><br><span class="line"> <span class="built_in">arrayWalk</span>(a, len, [](<span class="type">unsigned</span>&amp; *v*) &#123; std::cout &lt;&lt; *v* &lt;&lt; <span class="string">&#x27; &#x27;</span>; &#125;);</span><br><span class="line"> std::cout &lt;&lt; <span class="string">&quot;\nCount of greater than 60: &quot;</span> &lt;&lt; <span class="built_in">countif</span>(a, len, gt50);</span><br><span class="line"> std::cout &lt;&lt; <span class="string">&quot;\nCount of greater than 20: &quot;</span> &lt;&lt; <span class="built_in">countif</span>(a, len, [](<span class="type">unsigned</span> *v*)</span><br><span class="line"> &#123;<span class="keyword">return</span> *v* &gt; <span class="number">20</span>;&#125;);</span><br><span class="line"> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="复杂类型声明的简化">复杂类型声明的简化</h4>
+<ul>
+<li>typdef</li>
+<li>using</li>
+<li>拖尾类型</li>
+</ul>
+<h4 id="命名空间"><strong>命名空间</strong></h4>
+<ul>
+<li>
+<p>想象你和同事都写了一个 print()函数，但功能不同。如果没有命名空间，编译器无法区分这两个同名函数。命名空间就像给代码加了一个“姓氏”，避免重名混淆。</p>
+</li>
+<li>
+<p>Define</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> MyLib &#123;  <span class="comment">// 定义名为 MyLib 的命名空间</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;MyLib&#x27;s print\n&quot;</span>; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> YourLib &#123;  <span class="comment">// 另一个命名空间</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123; ·····</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Use</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    MyLib::<span class="built_in">print</span>();  <span class="comment">// 输出: MyLib&#x27;s print</span></span><br><span class="line">    YourLib::<span class="built_in">print</span>(); <span class="comment">// 输出: YourLib&#x27;s print</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>:: 是作用域解析运算符，指明调用哪个命名空间中的函数。</strong></p>
+<ul>
+<li>比如常见的std::cout 就是使用命名空间std 中的cout成员</li>
+</ul>
+<p>命名空间可以嵌套，内层空间对外层空间不可见，必须要先访问内层空间，再访问内层空间成员</p>
+<h4 id="using声明与using指令">using声明与using指令</h4>
+<ul>
+<li>using声明</li>
+</ul>
+<p><strong>using</strong> 作用域**::**成员</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">g</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">using</span> myspace::counter;</span><br><span class="line">++counter；</span><br><span class="line">myspace::<span class="built_in">f</span>(); <span class="comment">//OK</span></span><br><span class="line"><span class="built_in">f</span>(); <span class="comment">//error</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>using指令</li>
+</ul>
+<p>如果一段代码中出现多次对一个命名空间进行访问，使用::会显得累赘。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> 名字空间名;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br></pre></td></tr></table></figure>
+<p>但会导致与当前代码段发生命名冲突</p>
+<h2 id="面向对象的基石-类">面向对象的基石-类</h2>
 <p><strong>命名空间</strong></p>
 <ul>
 <li>
@@ -1047,7 +1168,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
